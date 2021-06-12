@@ -1,0 +1,45 @@
+.formDiv input{
+    margin: 10px 0px;
+}
+.formDiv label{
+    font-weight: bold;
+}
+.btn{
+    margin: 5px 0px;
+}
+
+
+.close{
+background: #340281;
+border-radius: 50%;
+color: white;
+}
+table{
+    th{
+        background: #340281;
+        color: white;
+        cursor: pointer;
+        font-family: monospace;
+    }
+}
+
+.fa-trash{
+    color: red;
+    cursor: pointer;
+}
+.formContainer{
+    padding: 10px 10px;
+    float: right;
+}
+
+form{
+    padding: 10px;
+}
+
+.float-right{
+    float: right;
+}
+
+.fa-pencil-square-o{
+    color: black;
+}

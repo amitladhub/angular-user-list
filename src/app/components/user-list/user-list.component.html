@@ -1,0 +1,86 @@
+<div class="container">
+          <h2>User Information</h2>
+          
+          <div class="">
+            <button (click)="open(content)" class="btn btn-primary float-right">Add New User</button>
+          </div>
+
+      <table class="table table-borderedless table-striped">
+        <thead class="thead-dark">  
+        <tr>
+              <th (click)="sortedColumn = 'username'" title="click here to sort column">User Name</th>
+              <th (click)="sortedColumn = 'first_name'">First Name</th>
+              <th (click)="sortedColumn = 'last_name'">Last Name</th>
+              <th (click)="sortedColumn = 'city'">City</th>
+              <th (click)="sortedColumn = 'department'">Department</th>
+              <th class="text-center">Edit</th>
+              <th class="text-center">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let userList of userListsData | sort: sortedColumn | paginate: { itemsPerPage: 5, currentPage: pageNumber }; let i = index">
+              <td>{{userList.username}}</td>
+              <td>{{userList.first_name}}</td>
+              <td>{{userList.last_name}}</td>
+              <td>{{userList.city}}</td>
+              <td>{{userList.department}}</td>
+              <td class="text-center"><a routerLink="/updateuser//{{userList.username}}"><i class="fa fa-2x fa-pencil-square-o" aria-hidden="true"></i></a>
+              </td>
+              <td class="text-center"><a (click)="onEditUser(i)"><i class="fa fa-2x fa-trash" aria-hidden="true"></i></a></td>
+          </tr>
+        </tbody>
+      </table> 
+      <div class="text-center">
+          <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls> 
+      </div>
+      <div class="green-banner" *ngIf="showGreenBanner">
+        <i class="fa fa-check-circle" aria-hidden="true"></i><span>User has been added successfully....</span>
+      </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h2 class="modal-title" id="modal-basic-title">Enter user details</h2>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span>
+    </button>
+  </div>
+  <form class="formContainer" (ngSubmit)="onAddItem(f)" #f='ngForm'>
+    <div class='col-sm-12 formDiv'>
+      <div class="form-group">
+        <label>User Name*</label>
+        <input type="number" name='username' ngModel class="form-control" placeholder="Enter User Id" required #usernamefield="ngModel">  
+        <p *ngIf="validUsername" style="color: red;">Username is already present.</p>
+        <span class="error-span" *ngIf="usernamefield.touched && !usernamefield.valid">Username is required</span>
+          
+      </div>
+      <div class="form-group">
+        <label>First Name*</label>
+        <input type="text" name='firstname' ngModel class="form-control" placeholder="Enter First Name" required #firstnamefield="ngModel">  
+        <span class="error-span" *ngIf="firstnamefield.touched && !firstnamefield.valid">First name is required</span>
+      </div>
+      <div class="form-group">
+        <label>Last Name*</label>
+        <input type="text" name='lastname' ngModel class="form-control" placeholder="Enter Last Name" required #lastnamefield="ngModel"> 
+        <span class="error-span" *ngIf="lastnamefield.touched && !lastnamefield.valid">Last name is required</span> 
+      </div>
+      <div class="form-group">
+        <label>City*</label>
+        <input type="text" name='city' ngModel class="form-control" placeholder="Enter City" required #city="ngModel">  
+        <span class="error-span" *ngIf="city.touched && !city.valid">City is required</span>
+      </div>
+      <div class="form-group">
+        <label>Department*</label>
+        <input type="text" name='department' ngModel class="form-control" placeholder="Enter Department" required #department="ngModel">  
+        <span class="error-span" *ngIf="department.touched && !department.valid">Department is required</span>
+      </div>
+      
+    </div>
+    <div class="modal-footer">
+      <button type="submit" type='submit' [disabled]="!f.valid" class="btn btn-primary">Submit</button>
+    </div>
+    
+  </form>
+ 
+</ng-template>
+

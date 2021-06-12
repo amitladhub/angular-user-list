@@ -1,0 +1,27 @@
+h2{
+    color: #340281 !important;
+    font-family: monospace;
+    text-transform: uppercase;
+}
+
+.green-banner{
+    background: #11bd11;
+    color: white;
+    font-size: 19px;
+    span{
+        padding: 5px;
+        display: inline-block;
+    }
+    .fa{
+        padding-left: 5px;
+    }
+}
+
+
+input.ng-touched.ng-invalid{
+    border: 1px solid red;
+}
+
+.error-span{
+    color: red;
+}

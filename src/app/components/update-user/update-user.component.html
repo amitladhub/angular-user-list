@@ -1,0 +1,42 @@
+<div class="row">
+  <form class="formContainer col-sm-6" (ngSubmit)="onSubmit(form)" [formGroup]="form">
+    <h2>Update User details</h2>
+    <div class='col-sm-12 formDiv'>
+      <div class="form-group">
+        <label>User Name</label>
+        <input type="number" formControlName='username' ngModel class="form-control" placeholder="Enter User Id"
+          readonly required pattern="^[1-9]+[0-9]*$">
+      </div>
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" formControlName='first_name' ngModel class="form-control" placeholder="Enter First Name"
+          required>
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" formControlName='last_name' ngModel class="form-control" placeholder="Enter Last Name"
+          required>
+      </div>
+      <div class="form-group">
+        <label>City</label>
+        <input type="text" formControlName='city' ngModel class="form-control" placeholder="Enter City" required>
+      </div>
+      <div class="form-group">
+        <label>Department</label>
+        <input type="text" formControlName='department' ngModel class="form-control" placeholder="Enter Department"
+          required>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button type="submit" type='submit' [disabled]="!form.valid" *ngIf="hideSubmitButton"
+        class="btn btn-primary">Submit</button>
+    </div>
+
+    <div class="green-banner" *ngIf="showGreenBanner">
+      <i class="fa fa-check-circle" aria-hidden="true"></i><span>User details has been modify successfully....redirect
+        to user page</span>
+    </div>
+
+  </form>
+</div>

@@ -1,0 +1,27 @@
+header{
+    background: #340281;
+    color: white;
+    padding: 10px;
+    margin: 0px;
+    margin-bottom: 20px;
+    .headerLogo img{
+        width:50px;
+    }
+    .headerMenu a{
+        text-decoration: none;
+        float: right;
+        color: white;
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 18px;
+        line-height: 25px;
+        border-radius: 4px;
+    }
+}
+
+.activeTab{
+    background: white; 
+    color: #340281 !important;
+    font-weight: bold;
+}
